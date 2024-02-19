@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +20,6 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get( '/', [HomeController::class, 'index'] )->name( 'home' );
+Route::get( '/account/register', [UserController::class, 'registration'] )->name( 'account.registration' );
+Route::post( '/account/process-register', [UserController::class, 'processRegistration'] )->name( 'account.processRegistration' );
+Route::get( '/login', [UserController::class, 'login'] )->name( 'account.login' );
