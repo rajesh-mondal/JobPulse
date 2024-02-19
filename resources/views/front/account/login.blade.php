@@ -21,7 +21,7 @@
             <div class="col-md-5">
                 <div class="card shadow border-0 p-5">
                     <h1 class="h3">Login</h1>
-                    <form action="#" method="post">
+                    <form action="{{ route('account.authenticate') }}" method="post">
                         @csrf
                         <div class="mb-3">
                             <label for="" class="mb-2">Email*</label>

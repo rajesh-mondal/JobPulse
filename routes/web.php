@@ -20,6 +20,19 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get( '/', [HomeController::class, 'index'] )->name( 'home' );
-Route::get( '/account/register', [UserController::class, 'registration'] )->name( 'account.registration' );
-Route::post( '/account/process-register', [UserController::class, 'processRegistration'] )->name( 'account.processRegistration' );
-Route::get( '/login', [UserController::class, 'login'] )->name( 'account.login' );
+
+Route::group( ['prefix' => 'account'], function () {
+    // Guest Routes
+    Route::group( ['middleware' => 'guest'], function () {
+        Route::get( '/register', [UserController::class, 'registration'] )->name( 'account.registration' );
+        Route::post( '/process-register', [UserController::class, 'processRegistration'] )->name( 'account.processRegistration' );
+        Route::get( '/login', [UserController::class, 'login'] )->name( 'account.login' );
+        Route::post( '/authenticate', [UserController::class, 'authenticate'] )->name( 'account.authenticate' );
+    } );
+
+    // Authenticated Routes
+    Route::group( ['middleware' => 'auth'], function () {
+        Route::get( '/profile', [UserController::class, 'profile'] )->name( 'account.profile' );
+        Route::get( '/logout', [UserController::class, 'logout'] )->name( 'account.logout' );
+    } );
+} );
