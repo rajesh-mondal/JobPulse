@@ -33,6 +33,7 @@ Route::group( ['prefix' => 'account'], function () {
     // Authenticated Routes
     Route::group( ['middleware' => 'auth'], function () {
         Route::get( '/profile', [UserController::class, 'profile'] )->name( 'account.profile' );
+        Route::put( '/update-profile', [UserController::class, 'updateProfile'] )->name( 'account.updateProfile' );
         Route::get( '/logout', [UserController::class, 'logout'] )->name( 'account.logout' );
     } );
 } );
