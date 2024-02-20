@@ -34,6 +34,7 @@ Route::group( ['prefix' => 'account'], function () {
     Route::group( ['middleware' => 'auth'], function () {
         Route::get( '/profile', [UserController::class, 'profile'] )->name( 'account.profile' );
         Route::put( '/update-profile', [UserController::class, 'updateProfile'] )->name( 'account.updateProfile' );
+        Route::post('/update-profile-pic',[UserController::class,'updateProfilePic'])->name('account.updateProfilePic');     
         Route::get( '/logout', [UserController::class, 'logout'] )->name( 'account.logout' );
     } );
 } );
