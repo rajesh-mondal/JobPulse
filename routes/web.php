@@ -39,5 +39,7 @@ Route::group( ['prefix' => 'account'], function () {
         Route::get( '/create-job', [UserController::class, 'createJob'] )->name( 'account.createJob' );
         Route::post( '/save-job', [UserController::class, 'saveJob'] )->name( 'account.saveJob' );
         Route::get( '/my-jobs', [UserController::class, 'myJobs'] )->name( 'account.myJobs' );
+        Route::get( '/my-jobs/edit/{jobId}', [UserController::class, 'editJob'] )->name( 'account.editJob' );
+        Route::post( '/update-job/{jobId}', [UserController::class, 'updateJob'] )->name( 'account.updateJob' );
     } );
 } );

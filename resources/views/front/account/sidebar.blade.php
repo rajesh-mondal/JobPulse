@@ -23,7 +23,7 @@
                 <a href="{{ route('account.createJob') }}">Post a Job</a>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                <a href="{{ route('account.createJob') }}">My Jobs</a>
+                <a href="{{ route('account.myJobs') }}">My Jobs</a>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                 <a href="{{ route('account.myJobs') }}">Jobs Applied</a>
