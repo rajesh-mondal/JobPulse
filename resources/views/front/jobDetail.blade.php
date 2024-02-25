@@ -36,11 +36,11 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- <div class="jobs_right">
+                            <div class="jobs_right">
                                 <div class="apply_now {{ ($count == 1) ? 'saved-job' : '' }}">
-                                    <a class="heart_mark " href="javascript:void(0);" onclick="saveJob({{ $job->id }})"> <i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                                    <a class="heart_mark" href="javascript:void(0);" href="javascript:void(0);" onclick="saveJob({{ $job->id }})"> <i class="fa fa-heart-o" aria-hidden="true"></i></a>
                                 </div>
-                            </div> --}}
+                            </div>
                         </div>
                     </div>
                     <div class="descript_wrap white-bg">
@@ -144,6 +144,18 @@
                     } 
                 });
             }
+        }
+
+        function saveJob(id){
+            $.ajax({
+                url : '{{ route("saveJob") }}',
+                type: 'post',
+                data: {id:id},
+                dataType: 'json',
+                success: function(response) {
+                    window.location.href = "{{ url()->current() }}";
+                } 
+            });
         }
     </script>
 @endsection
