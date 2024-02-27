@@ -6,10 +6,11 @@ use App\Models\Category;
 use App\Models\Job;
 use App\Models\JobApplication;
 use App\Models\JobType;
+use App\Models\SavedJob;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 // use SebastianBergmann\CodeCoverage\Driver\Driver;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -360,6 +361,22 @@ class UserController extends Controller {
 
         return response()->json( [
             'status' => true,
+        ] );
+    }
+
+    public function savedJobs() {
+        // $jobApplications = JobApplication::where( 'user_id', Auth::user()->id )
+        //     ->with( ['job', 'job.jobType', 'job.applications'] )
+        //     ->paginate( 10 );
+
+        $savedJobs = SavedJob::where( [
+            'user_id' => Auth::user()->id,
+        ] )->with( ['job', 'job.jobType', 'job.applications'] )
+            ->orderBy( 'created_at', 'DESC' )
+            ->paginate( 10 );
+
+        return view( 'front.account.job.saved-jobs', [
+            'savedJobs' => $savedJobs,
         ] );
     }
 }
