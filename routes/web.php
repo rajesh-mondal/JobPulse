@@ -50,5 +50,6 @@ Route::group( ['prefix' => 'account'], function () {
         Route::get( '/my-job-applications', [UserController::class, 'myJobApplications'] )->name( 'account.myJobApplications' );
         Route::post( '/remove-job-application', [UserController::class, 'removeJobs'] )->name( 'account.removeJobs' );
         Route::get( '/saved-jobs', [UserController::class, 'savedJobs'] )->name( 'account.savedJobs' );
+        Route::post( '/remove-saved-job', [UserController::class, 'removeSavedJob'] )->name( 'account.removeSavedJob' );
     } );
 } );

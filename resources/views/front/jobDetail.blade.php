@@ -38,7 +38,7 @@
                             </div>
                             <div class="jobs_right">
                                 <div class="apply_now {{ ($count == 1) ? 'saved-job' : '' }}">
-                                    <a class="heart_mark" href="javascript:void(0);" href="javascript:void(0);" onclick="saveJob({{ $job->id }})"> <i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                                    <a class="heart_mark " href="javascript:void(0);" onclick="saveJob({{ $job->id }})"> <i class="fa fa-heart-o" aria-hidden="true"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                     <div class="descript_wrap white-bg">
                         <div class="single_wrap">
                             <h4>Job description</h4>
-                            {!! nl2br($job->description) !!}   
+                            {!! nl2br($job->description) !!}
                         </div>
                         @if (!empty($job->responsibility))
                         <div class="single_wrap">
@@ -67,7 +67,7 @@
                         </div>
                         @endif
                         <div class="border-bottom"></div>
-                        <div class="pt-3 text-end">
+                        <div class="pt-3 text-end"> 
                             @if (Auth::check())
                                 <a href="#" onclick="saveJob({{ $job->id }});" class="btn btn-secondary">Save</a>  
                             @else
@@ -78,11 +78,12 @@
                                 <a href="#" onclick="applyJob({{ $job->id }})" class="btn btn-primary">Apply</a>
                             @else
                                 <a href="javascript:void(0);" class="btn btn-primary disabled">Login to Apply</a>
-                            @endif      
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="col-md-4">
                 <div class="card shadow border-0">
                     <div class="job_sumary">

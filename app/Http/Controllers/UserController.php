@@ -379,4 +379,25 @@ class UserController extends Controller {
             'savedJobs' => $savedJobs,
         ] );
     }
+
+    public function removeSavedJob( Request $request ) {
+        $savedJob = SavedJob::where( [
+            'id'      => $request->id,
+            'user_id' => Auth::user()->id]
+        )->first();
+
+        if ( $savedJob == null ) {
+            session()->flash( 'error', 'Job not found' );
+            return response()->json( [
+                'status' => false,
+            ] );
+        }
+
+        SavedJob::find( $request->id )->delete();
+        session()->flash( 'success', 'Job removed successfully.' );
+
+        return response()->json( [
+            'status' => true,
+        ] );
+    }
 }
