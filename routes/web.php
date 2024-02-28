@@ -29,6 +29,7 @@ Route::group( ['prefix' => 'admin', 'middleware' => 'checkRole'], function () {
     Route::get( '/users', [UsersController::class, 'index'] )->name( 'admin.users' );
     Route::get( '/users/{id}', [UsersController::class, 'edit'] )->name( 'admin.users.edit' );
     Route::put( '/users/{id}', [UsersController::class, 'update'] )->name( 'admin.users.update' );
+    Route::delete( '/users', [UsersController::class, 'destroy'] )->name( 'admin.users.destroy' );
 } );
 
 Route::group( ['prefix' => 'account'], function () {
