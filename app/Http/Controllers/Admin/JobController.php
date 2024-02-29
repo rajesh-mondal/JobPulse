@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Job;
 use App\Models\JobType;
-use App\Models\Category;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
 class JobController extends Controller {
@@ -79,5 +79,25 @@ class JobController extends Controller {
                 'errors' => $validator->errors(),
             ] );
         }
+    }
+
+    public function destroy( Request $request ) {
+        $id = $request->id;
+        $job = Job::find( $id );
+
+        if ( $job == null ) {
+            session()->flash( 'error', 'Either job deleted or not found' );
+            return response()->json( [
+                'status' => false,
+            ] );
+        }
+
+        $job->delete();
+
+        session()->flash( 'success', 'Job deleted successfully.' );
+        
+        return response()->json( [
+            'status' => true,
+        ] );
     }
 }
