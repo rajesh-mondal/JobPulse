@@ -19,6 +19,7 @@
             <li class="list-group-item d-flex justify-content-between p-3">
                 <a href="{{ route('account.profile') }}">Account Settings</a>
             </li>
+            
             @if(Auth::user()->role == 'admin' || Auth::user()->role == 'recruiter')
                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                     <a href="{{ route('account.createJob') }}">Post a Job</a>
@@ -48,7 +49,7 @@
                     <a href="{{ route('account.savedJobs') }}">Saved Jobs</a>
                 </li>
             @endif
-            
+
             <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                 <a href="{{ route('account.logout') }}">Logout</a>
             </li>                                                         
